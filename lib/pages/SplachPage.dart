@@ -43,7 +43,7 @@ class SplachPage extends StatelessWidget {
                 ),
                 customButtonWidget((){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DiscoveryPage()));
-                }, 25, constants.mainButttonColor, "Explore Store", constants.mainBlackColor),
+                }, 25, constants.mainButttonColor, "Explore Store", constants.mainBlackColor,150),
               ],
             ),
           )

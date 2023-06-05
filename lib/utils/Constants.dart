@@ -8,8 +8,14 @@ class Constants {
   final mainYellowColor =  Color(0xffF1B026);
   final mainBlackColor =  Color(0xff08090B);
   final mainGrayColor =  Color(0xffA2A9C2);
-  final mainYBGColor =  Color(0xffF4F4F5);
+  final mainBGColor =  Color(0xffF4F4F5);
   final mainWhiteGColor =  Color(0xffF8F1FC);
   final mainButttonColor =  Color(0xffF8F0FD);
+  final mainRedColor =  Color(0xffC2161E);
 
+    final List<String> categoryList = <String>[
+      "Games","Art","Sport","3D","Photograpghy","Collectables"
+    ];
+
+    final mokeParagraph = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,";
 }

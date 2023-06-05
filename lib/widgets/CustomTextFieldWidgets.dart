@@ -9,8 +9,8 @@ Widget customTextFieldWidget(int maxLines,String hintText,TextEditingController 
   return Padding(
     padding: const EdgeInsets.all(2.0),
     child: TextField(
-      style: TextStyle(color: constants.mainYBGColor),
-      cursorColor: constants.mainYBGColor,
+      style: TextStyle(color: constants.mainBGColor),
+      cursorColor: constants.mainBGColor,
       maxLines: maxLines,
       controller: controller,
       decoration: InputDecoration(
@@ -19,7 +19,7 @@ Widget customTextFieldWidget(int maxLines,String hintText,TextEditingController 
         errorBorder: InputBorder.none,
         disabledBorder: InputBorder.none,
         fillColor: constants.mainYellowColor,filled: true,
-        hintText: hintText,hintStyle: TextStyle(color: constants.mainYBGColor)
+        hintText: hintText,hintStyle: TextStyle(color: constants.mainBGColor)
       ),
 
     ),

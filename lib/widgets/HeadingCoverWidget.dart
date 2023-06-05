@@ -32,7 +32,7 @@ Widget headingCoverWidget (context){
 
                 child: Text("Discovery Web3 Products",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
           ),
-          customButtonWidget((){}, 25, constants.mainYBGColor, "Connect Wallet", constants.mainBlackColor),
+          customButtonWidget((){}, 25, constants.mainBGColor, "Connect Wallet", constants.mainBlackColor,150),
         ],
       )
     ],
