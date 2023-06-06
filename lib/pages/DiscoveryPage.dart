@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
 import 'package:woostorestackflutter/pages/CreateProductPage.dart';
+import 'package:woostorestackflutter/services/ContractFactoryServies.dart';
 import 'package:woostorestackflutter/widgets/CustomButtonWIdget.dart';
+import 'package:woostorestackflutter/widgets/CustomLoaderWidget.dart';
 import 'package:woostorestackflutter/widgets/CustomProductCardWidget.dart';
 import 'package:woostorestackflutter/widgets/CustomTextFieldWidgets.dart';
 import 'package:woostorestackflutter/widgets/HeadingCoverWidget.dart';
@@ -12,8 +15,10 @@ class DiscoveryPage extends StatelessWidget {
   DiscoveryPage({Key? key}) : super(key: key);
   Constants constants = Constants();
 
+
   @override
   Widget build(BuildContext context) {
+    var contractFactory = Provider.of<ContractFactoryServies>(context);
     return Scaffold(
       backgroundColor: constants.mainBGColor,
       floatingActionButton: FloatingActionButton(
@@ -58,9 +63,18 @@ class DiscoveryPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0, left: 10),
-              child: Text(
-                "Newest Products",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Newest Products",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  contractFactory.storeNameLoading?customLoaderWidget():Text(
+                    contractFactory.storeName.toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                  ),
+                ],
               ),
             ),
             Container(
@@ -69,13 +83,13 @@ class DiscoveryPage extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisSpacing: 15,
                   padding: EdgeInsets.all(15),
-                  itemCount: 10,
+                  itemCount: contractFactory.allProducts.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   crossAxisCount: 2,
                   itemBuilder: (context, index) {
                     return customProductCardWidget(
-                        context,constants.imageMoke, "Product ${index + 1}", "0.8");
+                        context,contractFactory.allProducts[index].image, contractFactory.allProducts[index].name, contractFactory.allProducts[index].price.toString(),contractFactory.allProducts[index]);
                   }),
             )
           ],

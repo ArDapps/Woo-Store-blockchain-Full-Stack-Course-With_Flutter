@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:woostorestackflutter/pages/ProductDetailsPage.dart';
+import 'package:woostorestackflutter/services/Models/ProductModel.dart';
 import 'package:woostorestackflutter/utils/Constants.dart';
 
-Widget customProductCardWidget (context,String imageUrl,String productName,String price){
+Widget customProductCardWidget (context,String imageUrl,String productName,String price,ProductModel product){
+  var convertedPrice = int.parse(price) / 1000000000000000000;
 Constants constants = Constants();
   return Padding(
     padding:  EdgeInsets.all(6.0),
@@ -13,7 +15,7 @@ Constants constants = Constants();
       ),
       child: InkWell(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetailsPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetailsPage(product:product ,)));
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -40,7 +42,7 @@ Constants constants = Constants();
               child: Row(
                 children: [
                   Icon(Icons.monetization_on_outlined,color: constants.mainYellowColor),
-                  Text(price +" ETH",style: TextStyle(fontSize: 15,color: constants.mainBlackColor),)
+                  Text(convertedPrice.toString() +" ETH",style: TextStyle(fontSize: 15,color: constants.mainBlackColor),)
                 ],
               ),
             )

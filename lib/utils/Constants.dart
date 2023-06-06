@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 
 class Constants {
 
+  //=======>Blockchain Data
+
+  //Contract Data
+  final CONTRACT_ADDRESS = "0x37369b8a6befccc4c5d4a6d0e9284e5b002e795f";
+  final CONTRACT_ABI_PATH = "images/abis/MarketplaceProducts.json";
+
+  //Blockchain Network Data
+  final NETWORK_HTTPS_RPC = "https://sepolia.infura.io/v3/24517b325a5c46d8b8e02d72ab4b9000";
+  final  NETWORK_WSS_RPC = "wss://sepolia.infura.io/ws/v3/24517b325a5c46d8b8e02d72ab4b9000";
+  final CHAIN_ID =11155111;
   final imageMoke = "https://images.unsplash.com/photo-1618042164219-62c820f10723?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80";
   
   final mainYellowColor =  Color(0xffF1B026);

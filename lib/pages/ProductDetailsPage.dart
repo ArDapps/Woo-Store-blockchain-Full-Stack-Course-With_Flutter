@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:random_avatar/random_avatar.dart';
+import 'package:woostorestackflutter/services/Models/ProductModel.dart';
 import 'package:woostorestackflutter/utils/Constants.dart';
 import 'package:woostorestackflutter/widgets/CustomButtonWIdget.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({Key? key}) : super(key: key);
+
+  ProductModel product;
+
+  ProductDetailsPage({required this.product,Key? key}) : super(key: key);
   Constants constants = Constants();
 
   @override
   Widget build(BuildContext context) {
+    var convertedPrice = int.parse(product.price.toString()) / 1000000000000000000;
+
     return Scaffold(
       backgroundColor: constants.mainBGColor,
       appBar: AppBar(
         backgroundColor: constants.mainBGColor,
         elevation: 0,
         title: Text(
-          "Product Details",
+          product.name,
           style: TextStyle(color: constants.mainYellowColor),
         ),
         iconTheme: IconThemeData(color: constants.mainYellowColor),
@@ -30,7 +36,7 @@ class ProductDetailsPage extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("images/splach.png"),
+                      image: NetworkImage(product.image),
                       fit: BoxFit.cover,
                       scale: 1)),
             ),
@@ -63,7 +69,7 @@ class ProductDetailsPage extends StatelessWidget {
                                     TextStyle(color: constants.mainYellowColor),
                               ),
                               Text(
-                                "Games",
+                                product.category,
                                 style:
                                     TextStyle(color: constants.mainWhiteGColor,fontSize: 20),
                               )
@@ -102,7 +108,7 @@ class ProductDetailsPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 18.0,left: 18),
               child: Text(
-                constants.mokeParagraph,
+                product.description,
                 style: TextStyle(color: constants.mainBlackColor,fontWeight: FontWeight.normal,fontSize: 15),textAlign: TextAlign.justify,
               ),
             ),
@@ -116,7 +122,7 @@ class ProductDetailsPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          RandomAvatar("0x9135AFACE007e45b8875B50E6bE9ec0EE501C073",height: 60,width: 60)
+                          RandomAvatar(product.owner.toString(),height: 60,width: 60)
                         ],
                       ),
                       Padding(
@@ -131,7 +137,7 @@ class ProductDetailsPage extends StatelessWidget {
                               TextStyle(color: constants.mainBlackColor),
                             ),
                             Text(
-                              "0x9135AFACE007e45b8875B50E6bE9ec0EE501C073",
+                              product.owner.toString(),
                               style:
                               TextStyle(color: constants.mainGrayColor,fontSize: 12),
                             )
@@ -147,7 +153,7 @@ class ProductDetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(" ETH 0.5 ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: constants.mainBlackColor),),
+                Text(" ETH ${convertedPrice} ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: constants.mainBlackColor),),
                 customButtonWidget((){print("BUY MOW");}, 15, constants.mainBlackColor, "BUY NOW", constants.mainWhiteGColor, 150)
               ],
             )
