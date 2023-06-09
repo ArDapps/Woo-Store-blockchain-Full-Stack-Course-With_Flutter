@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:woostorestackflutter/pages/CategoryProductsPage.dart';
 import 'package:woostorestackflutter/pages/CreateProductPage.dart';
 import 'package:woostorestackflutter/services/ContractFactoryServies.dart';
 import 'package:woostorestackflutter/widgets/CustomButtonWIdget.dart';
@@ -53,10 +54,16 @@ class DiscoveryPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 8),
-                      child: Text(
-                        constants.categoryList[index],
-                        style: TextStyle(
-                            fontSize: 15, color: constants.mainGrayColor),
+                      child: InkWell(
+                        onTap: (){
+                          contractFactory.getCategoryProducts( constants.categoryList[index]);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryProductsPage(categoryName: constants.categoryList[index])));
+                        },
+                        child: Text(
+                          constants.categoryList[index],
+                          style: TextStyle(
+                              fontSize: 15, color: constants.mainGrayColor),
+                        ),
                       ),
                     );
                   }),

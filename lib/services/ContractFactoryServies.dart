@@ -27,6 +27,7 @@ class ContractFactoryServies extends ChangeNotifier {
   String? myBalance;
 
   List<ProductModel> allProducts = [];
+  List<ProductModel> categoryProducts = [];
   List<ProductModel> allUserProducts = [];
 
   //1-Connect to blockchain Network(https/websocktio/web3dart)
@@ -293,6 +294,34 @@ class ContractFactoryServies extends ChangeNotifier {
       storeProductsLoading = false;
     } catch (e) {
       storeProductsLoading = true;
+    }
+
+    notifyListeners();
+  }
+
+  //fetch category products
+
+  getCategoryProducts(String categoryName) async {
+    try {
+      categoryProducts.clear();
+      for (int i = 1; i <= allProducts.length; i++) {
+
+        if(allProducts[i].category == categoryName){
+          categoryProducts.add(ProductModel(
+              id: allProducts[i].id,
+              name: allProducts[i].name,
+              description: allProducts[i].description,
+              image: allProducts[i].image,
+              sold: allProducts[i].sold,
+              owner: allProducts[i].owner,
+              price: allProducts[i].price,
+              category: allProducts[i].category));
+        }
+
+
+      }
+    } catch (e) {
+      print("Error at getCategoryProducts ${e} ");
     }
 
     notifyListeners();
