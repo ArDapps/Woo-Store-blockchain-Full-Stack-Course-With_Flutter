@@ -42,7 +42,7 @@ Constants constants = Constants();
               child: Row(
                 children: [
                   Icon(Icons.monetization_on_outlined,color: constants.mainYellowColor),
-                  Text(convertedPrice.toString() +" ETH",style: TextStyle(fontSize: 15,color: constants.mainBlackColor),)
+                  convertedPrice.toString().length > 3 ?Text(convertedPrice.toString().substring(0,3)  +" ETH",style: TextStyle(fontSize: 15,color: constants.mainBlackColor),):Text(convertedPrice.toString()+" ETH",style: TextStyle(fontSize: 15,color: constants.mainBlackColor),)
                 ],
               ),
             )

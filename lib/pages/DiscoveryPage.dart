@@ -37,7 +37,7 @@ class DiscoveryPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            headingCoverWidget(context),
+            headingCoverWidget(),
             Padding(
               padding: const EdgeInsets.only(top: 8.0, left: 10),
               child: Text(

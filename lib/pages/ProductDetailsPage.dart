@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:random_avatar/random_avatar.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:woostorestackflutter/services/Models/ProductModel.dart';
 import 'package:woostorestackflutter/utils/Constants.dart';
 import 'package:woostorestackflutter/widgets/CustomButtonWIdget.dart';
+
+import '../services/ContractFactoryServies.dart';
 
 class ProductDetailsPage extends StatelessWidget {
 
@@ -13,7 +18,10 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var convertedPrice = int.parse(product.price.toString()) / 1000000000000000000;
+    var contractFactory = Provider.of<ContractFactoryServies>(context);
+
+    var convertedPrice = (int.parse(product.price.toString()) / 1000000000000000000).toString();
+    // var cutPrice = convertedPrice.toString().substring(0,6);
 
     return Scaffold(
       backgroundColor: constants.mainBGColor,
@@ -122,7 +130,7 @@ class ProductDetailsPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          RandomAvatar(product.owner.toString(),height: 60,width: 60)
+                          RandomAvatar(product.owner.toString(),height: 50,width: 50)
                         ],
                       ),
                       Padding(
@@ -139,7 +147,7 @@ class ProductDetailsPage extends StatelessWidget {
                             Text(
                               product.owner.toString(),
                               style:
-                              TextStyle(color: constants.mainGrayColor,fontSize: 12),
+                              TextStyle(color: constants.mainGrayColor,fontSize: 10),
                             )
                           ],
                         ),
@@ -153,8 +161,11 @@ class ProductDetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(" ETH ${convertedPrice} ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: constants.mainBlackColor),),
-                customButtonWidget((){print("BUY MOW");}, 15, constants.mainBlackColor, "BUY NOW", constants.mainWhiteGColor, 150)
+                convertedPrice.length > 3?Text(" ETH ${convertedPrice.substring(0,5)} ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: constants.mainBlackColor),):Text(" ETH ${convertedPrice} ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,color: constants.mainBlackColor),),
+                product.owner.toString()!= contractFactory.myAccount?customButtonWidget(() async{
+
+                   contractFactory.buyProduct(product.id,contractFactory.myAccount.toString(),product.price)
+                  ;}, 15, constants.mainBlackColor, "BUY NOW", constants.mainWhiteGColor, 150):Text("Can not Buy Yours",style: TextStyle(fontSize: 10,color: constants.mainRedColor),)
               ],
             )
           ],
