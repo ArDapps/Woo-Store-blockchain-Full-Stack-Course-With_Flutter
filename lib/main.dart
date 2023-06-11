@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: DiscoveryPage(),
+      home: SplachPage(),
     ),);
   }
 }

@@ -27,17 +27,17 @@ class SplachPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 50.0,left: 30),
+            padding: const EdgeInsets.only(bottom: 50.0,left: 30 ,top: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
 
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top:18.0),
+                  padding: const EdgeInsets.only(top:20.0),
                   child: Container(
-                      height: MediaQuery.of(context).size.height * 0.20,
-                      width: MediaQuery.of(context).size.width * 0.70,
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      width: MediaQuery.of(context).size.width * 0.80,
 
                       child: Text("Start with our web3 Shop to buy and sell your products",style: TextStyle(fontSize: 35,fontWeight: FontWeight.normal,color: constants.mainWhiteGColor),)),
                 ),
