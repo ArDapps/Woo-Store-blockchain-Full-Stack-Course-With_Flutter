@@ -1,13 +1,12 @@
-# Sample Hardhat Project
+# Mobile Blockchain Developer Bootcamp With Solidity & Flutter 
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Welcome to our comprehensive course on Web3 and Blockchain with Flutter mobile app development! In this workshop, we have designed a hands-on learning experience that will equip you with the knowledge and skills needed to build and deploy decentralized applications (dApps) using the power of blockchain technology.
 
-Try running some of the following tasks:
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+
+## Smart Contract With Solidity
+## Flutter ui with Dart
+## Connect Ui with Blockchain WIth Web3dart
+## use Connect Wallet with Metamask
+
+![git-image](https://github.com/ArDapps/Woo-Store-blockchain-Full-Stack-Course-With_Flutter/assets/91119772/161da988-68b2-45ba-a17d-488d39a364c6)
